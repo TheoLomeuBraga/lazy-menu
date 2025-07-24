@@ -16,10 +16,14 @@ func set_up_owners(n:Node) -> void:
 var element_area : Node
 
 signal apply(values : Dictionary)
+signal back
 
 func apply_menu_changes() -> void:
 	LazyMenu.save(data_save_location,menu_values)
 	apply.emit(menu_values)
+
+func back_menu() -> void:
+	back.emit()
 
 func _ready() -> void:
 	
@@ -28,6 +32,11 @@ func _ready() -> void:
 	var button : Button = get_node("BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer/apply")
 	if is_instance_valid(button):
 		button.pressed.connect(apply_menu_changes)
+	
+	button = get_node("BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer/back")
+	if is_instance_valid(button):
+		button.pressed.connect(back_menu)
+	
 	
 	if not is_instance_valid(element_area):
 		return

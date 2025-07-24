@@ -175,6 +175,7 @@ size_flags_horizontal = 3
 
 [node name="CheckButton" type="CheckButton" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/swich/CenterContainer" node_paths=PackedStringArray("menu")]
 layout_mode = 2
+button_pressed = true
 script = ExtResource("9_sc2gg")
 value_change_name = "b"
 menu = NodePath("../../../../../../../../..")
@@ -235,7 +236,7 @@ alignment = 1
 [node name="HSlider" type="HSlider" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider/VBoxContainer" node_paths=PackedStringArray("menu")]
 layout_mode = 2
 size_flags_horizontal = 3
-value = 50.0
+value = 12.0
 script = ExtResource("10_4npyq")
 value_change_name = "slide"
 menu = NodePath("../../../../../../../../..")

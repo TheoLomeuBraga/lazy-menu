@@ -1,0 +1,263 @@
+[gd_scene load_steps=14 format=3 uid="uid://ds0fvb0gc82tx"]
+
+[ext_resource type="Script" uid="uid://bb8vylftcdk3e" path="res://addons/lazy_menu/assets/basic_lazy_menu.gd" id="1_k3073"]
+[ext_resource type="Script" uid="uid://wrlu1pl7bk8r" path="res://addons/lazy_menu/examples/lazy_color.gd" id="1_t4faf"]
+[ext_resource type="Script" uid="uid://dlutrpw2ag8d5" path="res://addons/lazy_menu/assets/resources/lazy_menu_save_location.gd" id="2_h5784"]
+[ext_resource type="Script" uid="uid://cdydkp8udm2kg" path="res://addons/lazy_menu/assets/resources/lazy_menu_element.gd" id="2_skxju"]
+[ext_resource type="Script" uid="uid://dud155f3vr0i6" path="res://addons/lazy_menu/assets/resources/lazy_menu_slider.gd" id="3_n1co5"]
+[ext_resource type="Script" uid="uid://ba5rioi2gx3ig" path="res://addons/lazy_menu/assets/menu_elements/update_slider_display.gd" id="5_n1co5"]
+
+[sub_resource type="Resource" id="Resource_t4faf"]
+script = ExtResource("3_n1co5")
+value = 0.5
+min = 0.0
+max = 1.0
+step = 0.1
+name = "R"
+metadata/_custom_type_script = "uid://dud155f3vr0i6"
+
+[sub_resource type="Resource" id="Resource_1lp75"]
+script = ExtResource("3_n1co5")
+value = 0.5
+min = 0.0
+max = 1.0
+step = 0.1
+name = "G"
+metadata/_custom_type_script = "uid://dud155f3vr0i6"
+
+[sub_resource type="Resource" id="Resource_s4ey2"]
+script = ExtResource("3_n1co5")
+value = 0.5
+min = 0.0
+max = 1.0
+step = 0.1
+name = "B"
+metadata/_custom_type_script = "uid://dud155f3vr0i6"
+
+[sub_resource type="Resource" id="Resource_skxju"]
+script = ExtResource("2_h5784")
+game_directory = "lazy menu/example/color"
+file_name = "lazy color example"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfwd1"]
+bg_color = Color(0, 0.0235294, 0.133333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pv82"]
+bg_color = Color(1, 1, 1, 0.301961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtqrs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t4faf")
+
+[node name="LazyExample" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k3073")
+title = "color"
+menu_blueprint = Array[ExtResource("2_skxju")]([SubResource("Resource_t4faf"), SubResource("Resource_1lp75"), SubResource("Resource_s4ey2")])
+data_save_location = SubResource("Resource_skxju")
+metadata/_custom_type_script = "uid://bb8vylftcdk3e"
+
+[node name="BaseBasicMenu" type="Control" parent="LazyExample"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LazyExample/BaseBasicMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.048
+anchor_right = 0.951
+anchor_bottom = 0.952
+offset_left = 0.551998
+offset_top = -0.104
+offset_right = -0.552002
+offset_bottom = 0.104004
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfwd1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "color"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2pv82")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="slider" type="HBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="display" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider/VBoxContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+script = ExtResource("5_n1co5")
+value_change_name = "R"
+menu = NodePath("../../../../../../../../..")
+
+[node name="VSeparator" type="VSeparator" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_vtqrs")
+
+[node name="@HBoxContainer@42195" type="HBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42195"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="display" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42195"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42195"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42195/VBoxContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+script = ExtResource("5_n1co5")
+value_change_name = "G"
+menu = NodePath("../../../../../../../../..")
+
+[node name="VSeparator" type="VSeparator" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42195"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_vtqrs")
+
+[node name="@HBoxContainer@42196" type="HBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42196"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="display" type="Label" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42196"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42196"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42196/VBoxContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+script = ExtResource("5_n1co5")
+value_change_name = "B"
+menu = NodePath("../../../../../../../../..")
+
+[node name="VSeparator" type="VSeparator" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/@HBoxContainer@42196"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_vtqrs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="back" type="Button" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "back
+"
+
+[node name="apply" type="Button" parent="LazyExample/BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "apply"
