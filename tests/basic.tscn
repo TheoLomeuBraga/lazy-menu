@@ -1,0 +1,263 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8k80ns7ixj6s"]
+
+[ext_resource type="Script" uid="uid://bb8vylftcdk3e" path="res://addons/lazy_menu/assets/basic_lazy_menu.gd" id="1_p3eg1"]
+[ext_resource type="Script" uid="uid://cdydkp8udm2kg" path="res://addons/lazy_menu/assets/resources/lazy_menu_element.gd" id="2_4npyq"]
+[ext_resource type="Script" uid="uid://clmrxea4747he" path="res://addons/lazy_menu/assets/resources/lazy_menu_checkbox.gd" id="3_cnx74"]
+[ext_resource type="Script" uid="uid://sj4aoq6r8mgd" path="res://addons/lazy_menu/assets/resources/lazy_menu_option.gd" id="5_2d46l"]
+[ext_resource type="Script" uid="uid://dud155f3vr0i6" path="res://addons/lazy_menu/assets/resources/lazy_menu_slider.gd" id="6_vtqrs"]
+[ext_resource type="Script" uid="uid://dlutrpw2ag8d5" path="res://addons/lazy_menu/assets/resources/lazy_menu_save_location.gd" id="8_4npyq"]
+[ext_resource type="Script" uid="uid://sqb68din7u0k" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_check_box.gd" id="8_kpxb0"]
+[ext_resource type="Script" uid="uid://beoiagqpcmgqm" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_check_button.gd" id="9_sc2gg"]
+[ext_resource type="Script" uid="uid://ba5rioi2gx3ig" path="res://addons/lazy_menu/assets/menu_elements/update_slider_display.gd" id="10_4npyq"]
+[ext_resource type="Script" uid="uid://co3mvtdurjurj" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_option_button.gd" id="10_sc2gg"]
+
+[sub_resource type="Resource" id="Resource_5hopd"]
+script = ExtResource("3_cnx74")
+value = false
+switch = false
+name = "a"
+metadata/_custom_type_script = "uid://clmrxea4747he"
+
+[sub_resource type="Resource" id="Resource_kpxb0"]
+script = ExtResource("3_cnx74")
+value = false
+switch = true
+name = "b"
+metadata/_custom_type_script = "uid://clmrxea4747he"
+
+[sub_resource type="Resource" id="Resource_sc2gg"]
+script = ExtResource("5_2d46l")
+value = 1
+options = Array[String](["a", "ou b"])
+name = "escolha"
+metadata/_custom_type_script = "uid://sj4aoq6r8mgd"
+
+[sub_resource type="Resource" id="Resource_4npyq"]
+script = ExtResource("6_vtqrs")
+value = 50.0
+min = 0.0
+max = 100.0
+step = 1.0
+name = "slide"
+metadata/_custom_type_script = "uid://dud155f3vr0i6"
+
+[sub_resource type="Resource" id="Resource_cnx74"]
+script = ExtResource("8_4npyq")
+game_directory = "lazy menu/data"
+file_name = "lazy menu demo"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfwd1"]
+bg_color = Color(0, 0.0235294, 0.133333, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pv82"]
+bg_color = Color(1, 1, 1, 0.301961)
+
+[sub_resource type="GDScript" id="GDScript_5hopd"]
+script/source = "extends HBoxContainer
+class_name lazy_menu_toogle_box
+
+
+func _ready() -> void:
+	pass # Replace with function body.
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afb0o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtqrs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Basic" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p3eg1")
+title = "my menu"
+menu_blueprint = Array[ExtResource("2_4npyq")]([SubResource("Resource_5hopd"), SubResource("Resource_kpxb0"), SubResource("Resource_sc2gg"), SubResource("Resource_4npyq")])
+data_save_location = SubResource("Resource_cnx74")
+metadata/_custom_type_script = "uid://bb8vylftcdk3e"
+
+[node name="BaseBasicMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BaseBasicMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.048
+anchor_right = 0.951
+anchor_bottom = 0.952
+offset_left = 0.551998
+offset_top = -0.104
+offset_right = -0.552002
+offset_bottom = 0.104004
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfwd1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseBasicMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "my menu"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2pv82")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="toggle" type="HBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_5hopd")
+
+[node name="Label" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/toggle"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "a"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/toggle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckBox" type="CheckBox" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/toggle/CenterContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+icon_alignment = 1
+script = ExtResource("8_kpxb0")
+value_change_name = "a"
+menu = NodePath("../../../../../../../../..")
+
+[node name="swich" type="HBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/swich"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "b"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/swich"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/swich/CenterContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+script = ExtResource("9_sc2gg")
+value_change_name = "b"
+menu = NodePath("../../../../../../../../..")
+
+[node name="option" type="HBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/option"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "enumerator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/option" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+selected = 1
+item_count = 2
+popup/item_0/text = "a"
+popup/item_0/id = 0
+popup/item_1/text = "ou b"
+popup/item_1/id = 1
+script = ExtResource("10_sc2gg")
+value_change_name = "escolha"
+menu = NodePath("../../../../../../../..")
+
+[node name="VSeparator" type="VSeparator" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/option"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_afb0o")
+
+[node name="slider" type="HBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "slide"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="display" type="Label" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HSlider" type="HSlider" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider/VBoxContainer" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+script = ExtResource("10_4npyq")
+value_change_name = "slide"
+menu = NodePath("../../../../../../../../..")
+
+[node name="VSeparator" type="VSeparator" parent="BaseBasicMenu/PanelContainer/VBoxContainer/Panel/ScrollContainer/VBoxContainer/slider"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_vtqrs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BaseBasicMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="back" type="Button" parent="BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "back
+"
+
+[node name="apply" type="Button" parent="BaseBasicMenu/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "apply"

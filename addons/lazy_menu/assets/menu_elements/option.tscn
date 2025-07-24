@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjyc3nxcj0a1m"]
+
+[ext_resource type="Script" uid="uid://co3mvtdurjurj" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_option_button.gd" id="1_7w7uw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afb0o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="option" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "enumerator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_7w7uw")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_afb0o")

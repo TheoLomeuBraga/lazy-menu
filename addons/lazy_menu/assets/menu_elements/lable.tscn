@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcs6ct42xbfhs"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mfwd1"]
+color = Color(1, 1, 1, 1)
+
+[node name="label" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "lable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_mfwd1")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "blabalbalbablabalbalbablabalbalbablabalbalba
+blabalbalba
+blabalbalbablabalbalbablabalbalbablabalbalbablabalbalba
+blabalbalbablabalbalba
+blabalbalbablabalbalbablabalbalba
+blabalbalba"
+horizontal_alignment = 1

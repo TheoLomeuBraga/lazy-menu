@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://da7k2r3d0uu70"]
+
+[ext_resource type="Script" uid="uid://beoiagqpcmgqm" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_check_button.gd" id="1_o668m"]
+
+[node name="swich" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "switch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("1_o668m")

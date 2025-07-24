@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://gde0hr8snimn"]
+
+[ext_resource type="Script" uid="uid://b1qhmh2847xyi" path="res://addons/lazy_menu/assets/menu_elements/lazy_menu_text_edit.gd" id="1_2x01f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e68cg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="text" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_2x01f")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_e68cg")
